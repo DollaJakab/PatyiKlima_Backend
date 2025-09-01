@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ['https://patyiklima.hu', 'https://patyi-klima.hu']; // your React site URL
+const allowedOrigins = ['https://www.patyi-klima.hu/', 'https://www.patyiklima.hu/']; // your React site URL
 
 app.use(
 	cors({
