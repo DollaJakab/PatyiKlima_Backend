@@ -12,16 +12,16 @@ const allowedOrigins = ['https://patyiklima.hu', 'https://patyi-klima.hu']; // y
 app.use(
 	cors({
 		origin: function (origin, callback) {
-			// allow requests with no origin (like curl or Postman for testing)
-			if (!origin) return callback(null, true);
-			if (allowedOrigins.indexOf(origin) === -1) {
-				return callback(new Error('Not allowed by CORS'));
+			if (!origin) return callback(null, true); // allow tools like Postman
+			if (!allowedOrigins.includes(origin)) {
+				// Reject the request but don't crash
+				return callback(null, false);
 			}
 			return callback(null, true);
 		},
-		credentials: true,
 	})
 );
+
 app.use(express.json());
 
 app.post('/api/send-email', async (req, res) => {
